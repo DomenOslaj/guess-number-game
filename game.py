@@ -16,5 +16,3 @@ while True:
         print("Your guess is not correct. Try something smaller.")
     elif guess < secret:
         print("Your guess is not correct. Try something bigger.")
-    else:
-        print("Please enter a number!")
