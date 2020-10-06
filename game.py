@@ -1,12 +1,13 @@
 import random
+import json
 
 secret = random.randint(1, 10)
 attempts = 0
+score_list = []
 
-with open("score.txt", "r") as score_file:
-    score = int(score_file.read())
-    best_score = str(score)
-    print("Top score: {0}" .format(best_score))
+with open("score_list.txt", "r") as score_file:
+    score_list = json.loads(score_file.read())
+    print("Top scores: {0}" .format(score_list))
 
 # endless loop
 while True:
@@ -16,10 +17,10 @@ while True:
     if guess == secret:
         print("Congratulations! Secret number is number " + str(secret) + ".")
         print("Attempts needed: {0}" .format(attempts))    #format method to join 2 strings
-        attempts = str(attempts)
-        if attempts < best_score:    #only save best result
-            with open("score.txt", "w") as score_file:
-                score_file.write(attempts)
+        score_list.append(attempts)
+
+        with open("score_list.txt", "w") as score_file:
+            score_file.write(json.dumps(score_list))
         break  # break the loop
 
     elif guess > 10:
