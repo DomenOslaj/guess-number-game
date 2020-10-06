@@ -4,16 +4,12 @@ import datetime
 
 secret = random.randint(1, 10)
 attempts = 0
-score_list = []
 
-current_time = datetime.datetime.now()
-print(current_time.strftime("%A " "%d-" "%m-" "%Y  " "%H:" "%M:" "%S"))
+time = datetime.datetime.now()
+current_time = time.strftime("%A " "%d-" "%m-" "%Y  " "%H:" "%M:" "%S")
 
 with open("score_list.txt", "r") as score_file:
     score_list = json.loads(score_file.read())
-
-score_list.sort()
-print("Top 3 scores: {0}" .format(score_list[:3]))
 
 # endless loop
 while True:
@@ -24,7 +20,7 @@ while True:
         print("Congratulations! Secret number is number " + str(secret) + ".")
         print("Attempts needed: {0}" .format(attempts))    #format method to join 2 strings
 
-        score_list.append(attempts)
+        score_list.append({"Attempts": attempts, "Date:": current_time})
 
         with open("score_list.txt", "w") as score_file:
             score_file.write(json.dumps(score_list))
