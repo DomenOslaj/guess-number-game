@@ -7,7 +7,9 @@ score_list = []
 
 with open("score_list.txt", "r") as score_file:
     score_list = json.loads(score_file.read())
-    print("Top scores: {0}" .format(score_list))
+
+score_list.sort()
+print("Top 3 scores: {0}" .format(score_list[:3]))
 
 # endless loop
 while True:
@@ -17,6 +19,7 @@ while True:
     if guess == secret:
         print("Congratulations! Secret number is number " + str(secret) + ".")
         print("Attempts needed: {0}" .format(attempts))    #format method to join 2 strings
+
         score_list.append(attempts)
 
         with open("score_list.txt", "w") as score_file:
