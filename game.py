@@ -13,7 +13,9 @@ current_time = time.strftime("%A " "%d-" "%m-" "%Y  " "%H:" "%M:" "%S")
 with open("score_list.txt", "r") as score_file:
     score_list = json.loads(score_file.read())
 
-for score_dict in score_list:
+new_score_list = sorted(score_list, key=lambda k: k['attempts'])[:3]
+
+for score_dict in new_score_list:
     text = "Attempts: {0} | Date and hour: {1} | Player: {2} | Secret number: {3} | Wrong guesses: {4}".format(str(
                                                                                             score_dict.get("attempts")),
                                                                                             score_dict.get("date"),
