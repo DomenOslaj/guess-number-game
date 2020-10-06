@@ -1,9 +1,13 @@
 import random
 import json
+import datetime
 
 secret = random.randint(1, 10)
 attempts = 0
 score_list = []
+
+current_time = datetime.datetime.now()
+print(current_time.strftime("%A " "%d-" "%m-" "%Y  " "%H:" "%M:" "%S"))
 
 with open("score_list.txt", "r") as score_file:
     score_list = json.loads(score_file.read())
