@@ -10,6 +10,12 @@ current_time = time.strftime("%A " "%d-" "%m-" "%Y  " "%H:" "%M:" "%S")
 
 with open("score_list.txt", "r") as score_file:
     score_list = json.loads(score_file.read())
+    #print(score_list)
+
+for score_dict in score_list:
+    #print(score_dict)
+    print("Attempts: " + str(score_dict.get("attempts")) + " | " + "Date: " + score_dict.get("date"))
+
 
 # endless loop
 while True:
@@ -20,7 +26,7 @@ while True:
         print("Congratulations! Secret number is number " + str(secret) + ".")
         print("Attempts needed: {0}" .format(attempts))    #format method to join 2 strings
 
-        score_list.append({"Attempts": attempts, "Date:": current_time})
+        score_list.append({"attempts": attempts, "date": current_time})
 
         with open("score_list.txt", "w") as score_file:
             score_file.write(json.dumps(score_list))
