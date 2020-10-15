@@ -57,16 +57,18 @@ def get_top_scores():
 
 # run a game
 while True:
-    selection = input("Would you like to A) play a new game, B) see the best scores, C) see all attempts or D) quit? ")
+    selection = input("Would you like to A) play a new game, B) see the best scores, C) see all attempts, "
+                      "D) eee wrong guesses, E) quit? ")
 
     if selection.upper() == "A":
         play_game()
     elif selection.upper() == "B":
         for score_dict in get_top_scores():
-            print(score_dict)
-
+            print(str(score_dict["attempts"]) + " attempts, date: " + score_dict.get("date"))
     elif selection.upper() == "C":
         for score_dict in get_score_list():
             print(score_dict)
-    else:
+    elif selection.upper() == "D":
+        for score_dict in get_score_list():
+            print(str("Wrong guesses: " + str(score_dict["wrong guesses"])))
         break
