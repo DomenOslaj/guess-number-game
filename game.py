@@ -11,16 +11,6 @@ def play_game():
     current_time = time.strftime("%A " "%d-" "%m-" "%Y  " "%H:" "%M:" "%S")
     score_list = get_score_list()
 
-    for score_dict in top_score_list:
-        text = "Attempts: {0} | Date and hour: {1} | Player: {2} | Secret number: {3} | Wrong guesses: {4}".format(str(
-                                                                                                score_dict.get("attempts")),
-                                                                                                score_dict.get("date"),
-                                                                                                score_dict.get("name"),
-                                                                                                score_dict.get("secret"),
-                                                                                                score_dict.get(
-                                                                                                    "wrong guesses"))
-        print(text)
-
     wrong_guesses = []
 
     while True:
@@ -64,3 +54,19 @@ def get_top_scores():
     top_score_list = sorted(score_list, key=lambda k: k['attempts'])[:3]
     return top_score_list
 
+
+# run a game
+while True:
+    selection = input("Would you like to A) play a new game, B) see the best scores, C) see all attempts or D) quit? ")
+
+    if selection.upper() == "A":
+        play_game()
+    elif selection.upper() == "B":
+        for score_dict in get_top_scores():
+            print(score_dict)
+
+    elif selection.upper() == "C":
+        for score_dict in get_score_list():
+            print(score_dict)
+    else:
+        break
