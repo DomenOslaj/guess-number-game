@@ -38,6 +38,7 @@ def play_game():
         elif guess < secret:
             print("Your guess is not correct. Try something bigger.")
 
+        # if guess != secret
         wrong_guesses.append(guess)
 
 
@@ -58,7 +59,7 @@ def get_top_scores():
 # run a game
 while True:
     selection = input("Would you like to A) play a new game, B) see the best scores, C) see all attempts, "
-                      "D) eee wrong guesses, E) quit? ")
+                      "D) See wrong guesses, E) quit? ")
 
     if selection.upper() == "A":
         play_game()
@@ -72,3 +73,8 @@ while True:
         for score_dict in get_score_list():
             print(str("Wrong guesses: " + str(score_dict["wrong guesses"])))
         break
+    elif selection.upper() == "E":
+        print("Bye")
+        break
+    else:
+        print("Don't unterstand you. Use only A, B, C, D, E")
