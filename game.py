@@ -77,4 +77,4 @@ while True:
         print("Bye")
         break
     else:
-        print("Don't unterstand you. Use only A, B, C, D, E")
+        print("Don't understand you. Use only A, B, C, D, E")
